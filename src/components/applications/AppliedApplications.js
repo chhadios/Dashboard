@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import Steppers from '../../static/stepper';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -16,12 +17,16 @@ const Item = styled(Paper)(({ theme }) => ({
 const list=(company,role,image)=>{
   return(
     <Item>
-          <Stack direction="row" spacing={2} >
-            <Item sx={{height:"90px"}}><img src={image} alt="Girl in a jacket" width="70" height="70"/></Item>
+          <Stack direction="row" spacing={2} sx={{marginLeft:"30px"}} >
+            <Item sx={{height:"70px",width:"70px",textAlign:"center"}}><img src={image} alt="Girl in a jacket" style={{paddingTop:"10%",width:"80%"}}/></Item>
             <Item sx={{boxShadow:"none"}}>
             <p style={{fontStyle:"normal",fontWeight:"Bold",fontSize:"25px",textAlign:"left"}}>{company}</p>
             <p style={{fontStyle:"normal",fontWeight:"normal",fontSize:"18px",textAlign:"left"}}>{role}</p>
               <Steppers/>
+            </Item>
+            <Item sx={{width:"30%",height:"80%",boxShadow:"none"}}>
+              <ArrowForwardIosIcon sx={{float:"right",cursor:"pointer"}}/>
+              <button style={{float:"right",cursor:"pointer", marginTop:"48%",width:"140px",backgroundColor:"white",borderRadius:"10px",height:"30px",fontSize:"16px"}}>Check Todos</button>
             </Item>
           </Stack>
         </Item>
@@ -38,11 +43,11 @@ const companies=[
     role:"Quality Engineer",
     image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoQHDufcEAlOR_elnoOiUcaC1RETpz00yjCA&usqp=CAU"
   },
-  {
-    name:"amazon",
-    role:"Senior Software Developer",
-    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQNThMg30NNbdy3GFt9y1bFDqG9t8Pa58Y2A&usqp=CAU"
-  },
+  // {
+  //   name:"amazon",
+  //   role:"Senior Software Developer",
+  //   image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQNThMg30NNbdy3GFt9y1bFDqG9t8Pa58Y2A&usqp=CAU"
+  // },
   {
     name:"BMW",
     role:"Front-end Developer",
@@ -57,7 +62,7 @@ const companies=[
 export default function AppliedApplications() {
   return (
     <Box sx={{ width: '100%' }}>
-      <Stack spacing={2}>
+      <Stack spacing={2} >
       
           {companies.map((item)=>(
             list(item.name,item.role,item.image)

@@ -8,7 +8,7 @@ export default function SearchBar() {
   return (
     <Paper
       component="form"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center',height:"40px", width: 200, float:"right",position:"relative",left:"-70px",top:"-70px" }}
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center',height:"30px", width: 300,borderRadius:"10px", float:"right",position:"relative",left:"-100px",top:"-65px" }}
     >
       <IconButton sx={{ p: '10px' }} aria-label="menu">
         <SearchIcon />
