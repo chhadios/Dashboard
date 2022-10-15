@@ -5,8 +5,7 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Check from '@mui/icons-material/Check';
-import SettingsIcon from '@mui/icons-material/Settings';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import PublishedWithChangesIcon from '@mui/icons-material/PublishedWithChanges';
 import VideoLabelIcon from '@mui/icons-material/VideoLabel';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 
@@ -110,8 +109,8 @@ function ColorlibStepIcon(props) {
   const { active, completed, className } = props;
 
   const icons = {
-    1: <SettingsIcon fontSize='small'/>,
-    2: <GroupAddIcon fontSize='small' />,
+    1: <Check fontSize='small'/>,
+    2: <PublishedWithChangesIcon fontSize='small' />,
     3: <VideoLabelIcon fontSize='small'/>,
   };
 
@@ -142,10 +141,10 @@ ColorlibStepIcon.propTypes = {
 
 const steps = ['Applied', 'In Process', 'Interview Scheduled'];
 
-export default function Steppers() {
+export default function Steppers(props) {
   return (
     
-      <Stepper alternativeLabel activeStep={1} connector={<ColorlibConnector />}>
+      <Stepper alternativeLabel activeStep={props.stage} connector={<ColorlibConnector />}>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel StepIconComponent={ColorlibStepIcon} sx={{marginRight:"100px",position:'relative',left:"52px",top:"8px"}}>{label}</StepLabel>
