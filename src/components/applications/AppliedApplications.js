@@ -20,7 +20,7 @@ const companies = [
   {
     name: "google",
     role: "DevOps Engineer",
-    stage: 2,
+    stage: 1,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
   },
   {
@@ -60,7 +60,9 @@ export default function AppliedApplications() {
           </Item>
           <Item sx={{ width: "30%", height: "80%", boxShadow: "none" }}>
             <ArrowForwardIosIcon sx={{ float: "right", cursor: "pointer" }} />
-            <button style={{ float: "right", cursor: "pointer", marginTop: "48%", width: "140px", backgroundColor: "white", borderRadius: "10px", height: "30px", fontSize: "16px" }} onClick={handleOpen}>Check Todos</button>
+            {stage===1 ?<button style={{ float: "right", cursor: "pointer", marginTop: "48%", width: "140px", backgroundColor: "white", borderRadius: "10px", height: "30px", fontSize: "16px" }} onClick={handleOpen}>Check Todos</button>
+            :stage===2 ?<button style={{ float: "right", cursor: "pointer", marginTop: "48%", width: "140px", backgroundColor: "white", borderRadius: "10px", height: "30px", fontSize: "16px" }}>Mock Interviews</button>
+            :<button style={{ float: "right", cursor: "pointer", marginTop: "48%", width: "180px", backgroundColor: "white", borderRadius: "10px", height: "30px", fontSize: "16px" }}>Cancel Application</button>}
           </Item>
         </Stack>
       </Item>
