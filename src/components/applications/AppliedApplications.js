@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import Steppers from '../../static/stepper';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import TodoModal from '../../static/modals/todoModal';
+import AlertBar from '../../static/notification';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -32,7 +33,7 @@ const companies = [
   {
     name: "google",
     role: "DevOps Engineer",
-    stage: 1,
+    stage: 2,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
   },
   {
@@ -48,6 +49,22 @@ export default function AppliedApplications() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [openBar, setOpenBar] = React.useState(false);
+
+  const handleClick = () => {
+    setOpenBar(true);
+  };
+
+  const handleCloseBar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpenBar(false);
+  };
+ 
+  
   const list = (company, role, image, stage) => {
     return (
       <Item sx={{borderRadius:"20px"}}>
@@ -62,7 +79,7 @@ export default function AppliedApplications() {
             <ArrowForwardIosIcon sx={{ float: "right", cursor: "pointer" }} />
             {stage===1 ?<button style={{ float: "right", cursor: "pointer", marginTop: "48%", width: "140px", backgroundColor: "white", borderRadius: "10px", height: "30px", fontSize: "16px" }} onClick={handleOpen}>Check Todos</button>
             :stage===2 ?<button style={{ float: "right", cursor: "pointer", marginTop: "48%", width: "140px", backgroundColor: "white", borderRadius: "10px", height: "30px", fontSize: "16px" }}>Mock Interviews</button>
-            :<button style={{ float: "right", cursor: "pointer", marginTop: "48%", width: "180px", backgroundColor: "white", borderRadius: "10px", height: "30px", fontSize: "16px" }}>Cancel Application</button>}
+            :<button style={{ float: "right", cursor: "pointer", marginTop: "48%", width: "180px", backgroundColor: "white", borderRadius: "10px", height: "30px", fontSize: "16px" }} onClick={handleClick}>Cancel Application</button>}
           </Item>
         </Stack>
       </Item>
@@ -80,6 +97,8 @@ export default function AppliedApplications() {
       </Stack>
     </Box>
     <TodoModal open={open} handleClose={handleClose}/>
+    <AlertBar open={openBar} handleClose={handleCloseBar} type={"warning"} message={"Application Canceled"}/>
+
     </>
   );
 }

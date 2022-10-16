@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import '../styles.css'
+import AlertBar from '../static/notification';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -12,26 +13,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 
 }));
-const list=(company,role,image,date)=>{
-  return(
-    <Item sx={{borderRadius:"20px"}}>
-          <Stack direction="row" spacing={2} sx={{width:"100%"}}>
-            <Item sx={{height:"40px",width:"40px",textAlign:"center",padding:"auto",marginTop:"10px"}}><img src={image} alt="Girl in a jacket" style={{paddingTop:"10%",width:"80%"}}/></Item>
-            <Item sx={{boxShadow:"none"}}>
-            <p style={{fontStyle:"normal",fontWeight:"Bold",fontSize:"20px",textAlign:"left"}}>{company}</p>
-            <p style={{fontStyle:"normal",fontWeight:"normal",fontSize:"14px",textAlign:"left"}}>{role}</p>
-            </Item>
-            
-            <Item sx={{boxShadow:"none"}}>
-              <button style={{float:"right",cursor:"pointer", marginTop:"38%",width:"90px",backgroundColor:"white",borderRadius:"6px",height:"25px",fontSize:"14px"}}>Save</button>
-            </Item>
-            <Item sx={{boxShadow:"none"}}>
-              <button style={{float:"right",cursor:"pointer", marginTop:"38%",width:"90px",backgroundColor:"white",borderRadius:"6px",height:"25px",fontSize:"14px"}}>Apply</button>
-            </Item>
-          </Stack>
-        </Item>
-  )
-}
+
 const companies=[
   {
     name:"google",
@@ -75,6 +57,40 @@ const companies=[
   
 ]
 export default function FeaturedJobs() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const list=(company,role,image,date)=>{
+  
+  return(
+    <Item sx={{borderRadius:"20px"}}>
+          <Stack direction="row" spacing={2} sx={{width:"100%"}}>
+            <Item sx={{height:"40px",width:"40px",textAlign:"center",padding:"auto",marginTop:"10px"}}><img src={image} alt="Girl in a jacket" style={{paddingTop:"10%",width:"80%"}}/></Item>
+            <Item sx={{boxShadow:"none"}}>
+            <p style={{fontStyle:"normal",fontWeight:"Bold",fontSize:"20px",textAlign:"left"}}>{company}</p>
+            <p style={{fontStyle:"normal",fontWeight:"normal",fontSize:"14px",textAlign:"left"}}>{role}</p>
+            </Item>
+            
+            <Item sx={{boxShadow:"none"}}>
+              <button style={{float:"right",cursor:"pointer", marginTop:"38%",width:"90px",backgroundColor:"white",borderRadius:"6px",height:"25px",fontSize:"14px"}} onClick={handleClick}>Save</button>
+            </Item>
+            <Item sx={{boxShadow:"none"}}>
+              <button style={{float:"right",cursor:"pointer", marginTop:"38%",width:"90px",backgroundColor:"white",borderRadius:"6px",height:"25px",fontSize:"14px"}}>Apply</button>
+            </Item>
+          </Stack>
+        </Item>
+  )
+}
   return (
     <>
     
@@ -87,6 +103,7 @@ export default function FeaturedJobs() {
         
       </Stack>
     </Box>
+    <AlertBar open={open} handleClose={handleClose} type={"success"} message={"Saved Successfully"}/>
     </>
   );
 }
