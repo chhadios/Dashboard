@@ -32,13 +32,13 @@ const companies = [
   {
     name: "google",
     role: "DevOps Engineer",
-    stage: 2,
+    stage: 1,
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
   },
   {
     name: "tesle",
     role: "Quality Engineer",
-    stage: 2,
+    stage: 0,
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoQHDufcEAlOR_elnoOiUcaC1RETpz00yjCA&usqp=CAU"
   },
 
