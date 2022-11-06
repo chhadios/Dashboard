@@ -22,7 +22,9 @@ import Avatar from '@mui/material/Avatar';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import SearchBar from '../static/searchbar';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 const Header = () => {
     const [drawer, setDrawer] = useState(false);
     const [menu, setMenu] = useState(null);
@@ -43,6 +45,8 @@ const Header = () => {
 
         setDrawer(open);
     };
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('sm'));
     const list = () => (
         <Box
             sx={{ width: 250 }}
@@ -51,11 +55,11 @@ const Header = () => {
             onKeyDown={toggleDrawer(false)}
         >
             <List>
-                {['Inbox', 'Dashboard', 'Jobs', 'Trainings'].map((text, index) => (
+                {['Inbox', 'Home', 'Saved'].map((text, index) => (
                     <ListItem key={text} disablePadding style={text === "Dashboard" ? { backgroundColor: "lightblue" } : null}>
                         <ListItemButton>
                             <ListItemIcon >
-                                {text === "Dashboard" ? <DashboardCustomizeRoundedIcon /> : text === "Inbox" ? <InboxIcon /> : text === "Jobs" ? <WorkRoundedIcon /> : <ModelTrainingRoundedIcon />}
+                                {text === "Home" ? <DashboardCustomizeRoundedIcon /> : text === "Inbox" ? <InboxIcon />: <ModelTrainingRoundedIcon />}
                             </ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItemButton>
@@ -90,10 +94,11 @@ const Header = () => {
             </SwipeableDrawer>
             <div style={{ backgroundColor: "lightblue", height: "90px", marginTop: "0", padding: "10px" }}>
 
-                <p><h3 style={{ textAlign: "center", position:"relative",top:"10px" }}>JobSeeker</h3><MenuRoundedIcon style={{ position: "relative", top: "-40px", cursor: "pointer" }} sx={{ fontSize: "30px" }} onClick={toggleDrawer(true)} /></p>
-                <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkIN3NWgzgBDUrWFpowhW7ismNK_F5JkscSQ&usqp=CAU" style={{ float: "right", position: "relative", top: "-70px", cursor: "pointer" }} onClick={handleClick} />
-                <NotificationsRoundedIcon style={{ float: "right", position: "relative", top: "-65px", left: "-20", cursor: "pointer" }} sx={{ fontSize: "30px" }} />
-                <SearchBar  />
+                <p>{matches? <h3 style={{ textAlign: "center", position:"relative",top:"10px" }}>PropSeeker</h3>
+                :<h4 style={{ textAlign: "center", position:"relative",top:"10px" }}>PropSeeker</h4>}<MenuRoundedIcon style={{ position: "relative", top: "-40px", cursor: "pointer" }} sx={{ }} onClick={toggleDrawer(true)} /></p>
+                <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkIN3NWgzgBDUrWFpowhW7ismNK_F5JkscSQ&usqp=CAU" style={{ float: "right", position: "relative", top: "-70px", cursor: "pointer", width:!matches?"35px":null, height:!matches?"35px":null}} onClick={handleClick}  />
+                {matches? <NotificationsRoundedIcon style={{ float: "right", position: "relative", top: "-65px", left: "-20", cursor: "pointer" }} sx={{ fontSize: "30px" }} /> : null}
+                
                 <Menu
                     id="basic-menu"
                     anchorEl={menu}
