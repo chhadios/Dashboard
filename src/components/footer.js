@@ -5,7 +5,6 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import { Divider } from "@mui/material";
 import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
 import { Stack } from "@mui/system";
 import { Paper } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';

@@ -10,7 +10,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import DashboardCustomizeRoundedIcon from '@mui/icons-material/DashboardCustomizeRounded';
-import WorkRoundedIcon from '@mui/icons-material/WorkRounded';
 import ModelTrainingRoundedIcon from '@mui/icons-material/ModelTrainingRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';

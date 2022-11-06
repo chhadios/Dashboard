@@ -1,10 +1,9 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import AppliedApplications from './properties';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { color, Stack } from '@mui/system';
+import { Stack } from '@mui/system';
 import { Paper } from '@mui/material';
 import TodoModal from '../../static/modals/FilterModal';
 import Button from '@mui/material/Button';
@@ -52,11 +51,11 @@ const Applications = () => {
                {matches? <Item style={{boxShadow:"none"}}>
                 <Stack
                     direction={{ xs: 'column', sm: 'row' }}
-                    spacing={{ xs: 0, sm: 0, md: 0 }}
-                    style={{marginBottom:"20px"}}
                     spacing={2}
+                    style={{marginBottom:"20px"}}
+                   
                 >
-                    {location?<Item style={{border:" 1px solid blue",width:"10%",height:"35px"}}>
+                    {location?<Item style={{border:" 1px solid blue",width:"15%",height:"35px"}}>
                     <span>{location}</span>
                     </Item> :null}
                     {!(price[0]===0 && price[1]===100) ?<Item style={{border:" 1px solid blue",width:"10%",height:"35px"}}>
