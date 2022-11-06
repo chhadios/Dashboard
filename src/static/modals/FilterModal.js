@@ -83,7 +83,7 @@ const style = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     width: matches?"40%" : "100%",
-    height: matches? "70%": "60%",
+    height: matches? "70%": "75%",
     borderRadius: "20px",
     bgcolor: 'background.paper',
     boxShadow: 24,
